@@ -74,5 +74,7 @@ const game = document.querySelector(".memory-game");
 game.addEventListener("mousemove", changeColor);
 
 function changeColor(e) {
-  document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 120)`;
+  e.target.parentElement.parentElement.style.backgroundColor = `rgb(${
+    e.offsetX
+  }, ${e.offsetY}, 120)`;
 }
