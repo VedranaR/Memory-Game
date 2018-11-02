@@ -5,11 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--import the Font awesome-->
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Memory Game </title>
 </head>
 
 <body>
+    <header>
+        <h1>Vedrana's Matching Game</h1>
+    </header>
+
+    <section class="score-panel">
+        <ul class="stars">
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+        </ul>
+
+        <span class="moves">3</span> Moves
+
+        <div class="restart">
+            <i class="fa fa-repeat"></i>
+        </div>
+    </section>
+
     <section class="memory-game">
         <div class="memory-card" data-img="heart">
             <img src="img/heart.svg" alt="heart" class="front-face">
