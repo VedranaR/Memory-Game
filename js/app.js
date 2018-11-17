@@ -78,3 +78,7 @@ function changeColor(e) {
     e.offsetX
   }, ${e.offsetY}, 120, 0.3)`;
 }
+
+document.getElementById("repeat").addEventListener("mousedown", e => {
+  window.location.reload();
+});
