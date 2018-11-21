@@ -68,17 +68,6 @@ function resetBoard() {
 
 cards.forEach(card => card.addEventListener("click", flipCard));
 
-//Changes the body color on mouse move
-const game = document.querySelector(".memory-game");
-
-game.addEventListener("mousemove", changeColor);
-
-function changeColor(e) {
-  e.target.parentElement.parentElement.style.backgroundColor = `rgba(${
-    e.offsetX
-  }, ${e.offsetY}, 120, 0.3)`;
-}
-
-document.getElementById("repeat").addEventListener("mousedown", e => {
+document.getElementById("repeat").addEventListener("click", e => {
   window.location.reload();
 });

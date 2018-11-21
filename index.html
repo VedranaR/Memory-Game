@@ -14,85 +14,87 @@
   </head>
 
   <body>
-    <header><h1>Vedrana's Memory Game</h1></header>
+    <section id="flex-container">
+      <header><h1 id="title">Vedrana's Memory Game</h1></header>
 
-    <section class="score-panel">
-      <ul class="stars">
-        <li><i class="fa fa-star"></i></li>
-        <li><i class="fa fa-star"></i></li>
-        <li><i class="fa fa-star"></i></li>
-      </ul>
+      <section id="score-panel">
+        <ul id="stars">
+          <li><i class="fa fa-star"></i></li>
+          <li><i class="fa fa-star"></i></li>
+          <li><i class="fa fa-star"></i></li>
+        </ul>
 
-      <span class="moves"><em>3</em></span> Moves
+        <span class="moves"><em></em></span> Moves
 
-      <div class="restart"><i class="fa fa-repeat" id="repeat"></i></div>
-    </section>
+        <div id="restart"><i class="fa fa-repeat" id="repeat"></i></div>
+      </section>
 
-    <section class="memory-game">
-      <div class="memory-card" data-img="heart">
-        <img src="img/heart.svg" alt="heart" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="heart">
-        <img src="img/heart.svg" alt="heart" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="triangle">
-        <img src="img/triangle.svg" alt="triangle" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="triangle">
-        <img src="img/triangle.svg" alt="triangle" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="circle">
-        <img src="img/circle.svg" alt="circle" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="circle">
-        <img src="img/circle.svg" alt="circle" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="leaf">
-        <img src="img/leaf.svg" alt="leaf" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="leaf">
-        <img src="img/leaf.svg" alt="leaf" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="squirel">
-        <img src="img/squirel.svg" alt="squirel" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="squirel">
-        <img src="img/squirel.svg" alt="squirel" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="panda">
-        <img src="img/panda.svg" alt="panda" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="panda">
-        <img src="img/panda.svg" alt="panda" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="dolphin">
-        <img src="img/dolphin.svg" alt="dolphin" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="dolphin">
-        <img src="img/dolphin.svg" alt="dolphin" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="cat">
-        <img src="img/cat.svg" alt="cat" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
-      <div class="memory-card" data-img="cat">
-        <img src="img/cat.svg" alt="cat" class="front-face" />
-        <img src="img/back.svg" alt="back image" class="back-face" />
-      </div>
+      <section class="memory-game">
+        <div class="memory-card" data-img="heart">
+          <img src="img/heart.svg" alt="heart" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="heart">
+          <img src="img/heart.svg" alt="heart" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="triangle">
+          <img src="img/triangle.svg" alt="triangle" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="triangle">
+          <img src="img/triangle.svg" alt="triangle" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="circle">
+          <img src="img/circle.svg" alt="circle" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="circle">
+          <img src="img/circle.svg" alt="circle" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="leaf">
+          <img src="img/leaf.svg" alt="leaf" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="leaf">
+          <img src="img/leaf.svg" alt="leaf" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="squirel">
+          <img src="img/squirel.svg" alt="squirel" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="squirel">
+          <img src="img/squirel.svg" alt="squirel" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="panda">
+          <img src="img/panda.svg" alt="panda" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="panda">
+          <img src="img/panda.svg" alt="panda" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="dolphin">
+          <img src="img/dolphin.svg" alt="dolphin" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="dolphin">
+          <img src="img/dolphin.svg" alt="dolphin" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="cat">
+          <img src="img/cat.svg" alt="cat" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+        <div class="memory-card" data-img="cat">
+          <img src="img/cat.svg" alt="cat" class="front-face" />
+          <img src="img/back.svg" alt="back image" class="back-face" />
+        </div>
+      </section>
     </section>
 
     <script src="js/app.js"></script>
