@@ -20,12 +20,14 @@ body {
 }
 
 #title {
-  font-size: 4rem;
+  font-size: 5rem;
+  font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
   padding: 5px 0;
   margin: 1rem 0;
-  min-width: 40%;
-  color: rgb(15, 100, 150);
+  max-width: 55vw;
+  color: rgb(31, 53, 46);
+  text-align: center;
 }
 
 .memory-game {
@@ -75,7 +77,7 @@ body {
 #score-panel {
   width: 25vw;
   font-size: 2rem;
-  color: rgb(15, 100, 150);
+  color: rgb(31, 53, 46);
   margin: 5px 0;
   padding: 5px 0;
   display: flex;
@@ -99,4 +101,56 @@ body {
 #restart {
   float: right;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  #flex-container {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  #title {
+    font-size: 3rem;
+    padding: 2px 0;
+    margin: 1rem 0;
+    max-width: 75vw;
+  }
+
+  .memory-game {
+    width: 80vw;
+    height: 60vh;
+  }
+
+  #score-panel {
+    width: 45vw;
+    font-size: 1rem;
+    margin: 2px 0;
+    padding: 2px 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #flex-container {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  #title {
+    font-size: 2rem;
+    padding: 2px 0;
+    margin: 1rem 0;
+    max-width: 80vw;
+  }
+
+  .memory-game {
+    width: 85vw;
+    height: 70vh;
+  }
+
+  #score-panel {
+    width: 55vw;
+    font-size: 1rem;
+    margin: 1px 0;
+    padding: 1px 0;
+  }
 }

@@ -4,16 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- import the Font awesome -->
+    <!-- import Font awesome -->
     <link
       rel="stylesheet prefetch"
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
+    />
+    <!-- import Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
     <title>Memory Game</title>
   </head>
 
   <body>
+    <section>
+      <div
+        class="modal fade"
+        id="winnerModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="winnerModal-label"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="winnerModal-label">
+                Congratulations, you're the Winner!
+              </h4>
+            </div>
+            <div class="modal-body"><p id="winnerText"></p></div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                onclick="init(), $rating.removeClass('fa-star-o').addClass('fa-star'); "
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                Play again!
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="flex-container">
       <header><h1 id="title">Vedrana's Memory Game</h1></header>
 
