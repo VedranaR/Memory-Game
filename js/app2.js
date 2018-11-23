@@ -73,4 +73,35 @@ let begin = () => {
   }
 };
 
-begin();
+//begin();
+
+//a func to check if flipped cards are matching
+let checkMatch = () => {
+  $memoryGame.find(".memory-card").bind("click", () => {
+    let $this = $(this);
+
+    if ($this.hasClass("show") || $this.hasClass("match")) {
+      return true;
+    } //provifnes
+
+    let card = $this.content.innerHTML;
+    $this.addClass("open show");
+    openCards.push(card); //pushing card into arr with other open cards to operate on
+
+    if (openCards.length > 1) {
+      //checking if HTMLs match
+      if (card === openCards[0]) {
+        $memoryGame.find(".open").addClass("match");
+        setTimeout(() => {
+          $memoryGame.find(".open").removeClass("open show");
+        }, waitTime);
+        match++;
+      } else {
+        $memoryGame.find(".open").addClass("notmatch");
+        setTimeout(() => {
+          $memoryGame.find(".open").removeClass("open show");
+        }, waitTime / 2);
+      }
+    }
+  });
+};
