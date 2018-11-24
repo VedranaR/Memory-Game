@@ -6,7 +6,7 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(120deg, #ecf5bb 0%, #52d4ad 100%);
+  background: linear-gradient(120deg, #f86464 0%, #52d4ad 100%);
 }
 
 .flex-container {
@@ -54,7 +54,18 @@ body {
   margin: auto;
   color: rgb(31, 53, 46);
   text-align: center;
-  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  box-shadow: 10px 5px 20px 0 rgba(46, 61, 73, 0.5);
+  cursor: pointer;
+}
+
+.memory-card .open {
+  transform: rotateY(0);
+  cursor: default;
+}
+
+.memory-card .match {
+  background: #f0e43f;
+  cursor: default;
 }
 
 .score-panel {
