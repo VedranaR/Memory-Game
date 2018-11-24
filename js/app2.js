@@ -71,9 +71,23 @@ let begin = () => {
       )
     );
   }
+
+  checkMatch();
 };
 
-//begin();
+let playerRating = (moves){
+  let rating;
+  if(15 < moves > 20){
+    $rating.eq(2).removeClass('fa-star').addClass('fa-star-o');
+    rating = 3;
+  } else if (20 < moves < 25) {
+    $rating.eq(1).removeClass('fa-star').addClass('fa-star-o');
+    rating = 2;
+  } else if (moves > 25) {
+    $rating.eq(0).removeClass('fa-star').addClass('fa-star-o');
+    rating = 1;
+  }
+}
 
 //a func to check if flipped cards are matching
 let checkMatch = () => {
@@ -102,6 +116,15 @@ let checkMatch = () => {
           $memoryGame.find(".open").removeClass("open show");
         }, waitTime / 2);
       }
+
+      //empty the openCards array
+      openCards = [];
+
+      //increment the moves - needed to calculate the rating
+      moves++;
+    }
+
+    if (pairs === match) {
     }
   });
 };
