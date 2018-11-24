@@ -21,11 +21,11 @@ let icons = [
 //Defined jQuery selectors
 let $container = $(".flex-container"),
   $scorePanel = $(".score-panel"),
+  $memoryGame = $(".memory-game"),
   $rating = $(".fa-star"),
   $moves = $(".moves"),
   $timer = $(".timer"),
-  $restart = $(".restart"),
-  $memoryGame = $(".memory-game");
+  $restart = $(".restart");
 
 //setting values of the variables
 let openCards = [],
@@ -33,7 +33,8 @@ let openCards = [],
   waitTime = 500,
   pairs = icons.length / 2,
   moves = 0, //integer, different from jQuery selector
-  match = 0;
+  match = 0,
+  time;
 
 //shuffling func from Stackoverflow
 let shuffle = array => {
@@ -57,9 +58,15 @@ let begin = () => {
   icons = shuffle(icons);
   $memoryGame.empty();
 
+  //reset every game parameter
   match = 0;
   moves = 0;
   $moves.text("0");
+
+  resetTimer(time);
+  second = 0;
+  $timer.text(`${second}`);
+  startTimer();
 
   //make tiles and push icons
   for (let x = 0; x < icons.length; x++) {
@@ -75,19 +82,41 @@ let begin = () => {
   checkMatch();
 };
 
-let playerRating = (moves){
+let playerRating = moves => {
   let rating;
-  if(15 < moves > 20){
-    $rating.eq(2).removeClass('fa-star').addClass('fa-star-o');
+  if (15 < moves > 20) {
+    $rating
+      .eq(2)
+      .removeClass("fa-star")
+      .addClass("fa-star-o");
     rating = 3;
   } else if (20 < moves < 25) {
-    $rating.eq(1).removeClass('fa-star').addClass('fa-star-o');
+    $rating
+      .eq(1)
+      .removeClass("fa-star")
+      .addClass("fa-star-o");
     rating = 2;
   } else if (moves > 25) {
-    $rating.eq(0).removeClass('fa-star').addClass('fa-star-o');
+    $rating
+      .eq(0)
+      .removeClass("fa-star")
+      .addClass("fa-star-o");
     rating = 1;
   }
-}
+  return { score: rating };
+};
+
+let modal = (score, moves) => {
+  $("#text").text(
+    `For earning the score of ${score} in ${seconds} seconds, with ${moves} moves, we congratulate You!`
+  );
+  $("#modal").modal("toggle");
+};
+
+$restart.bind("click", () => {
+  $rating.removeClass("fa-star-o").addClass("fa-star");
+  begin();
+});
 
 //a func to check if flipped cards are matching
 let checkMatch = () => {
@@ -125,6 +154,25 @@ let checkMatch = () => {
     }
 
     if (pairs === match) {
+      rating(moves);
+      let score = rating(moves).score;
+      setTimeout(() => {}, waitTime);
     }
   });
 };
+
+//starts the timer on window load
+let startTimer = () => {
+  time = setInterval(() => {
+    $timer.text(`${second}`);
+    second += 1;
+  }, 1000);
+};
+
+let resetTimer = time => {
+  if (time) {
+    clearInterval(time);
+  }
+};
+
+begin();

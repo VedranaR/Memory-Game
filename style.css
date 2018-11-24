@@ -6,7 +6,7 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(100deg, #d1f3e9 0%, #52d4ad 100%);
+  background: linear-gradient(120deg, #ecf5bb 0%, #52d4ad 100%);
 }
 
 .flex-container {
@@ -20,10 +20,10 @@ body {
 }
 
 #title {
-  font-size: 5rem;
+  font-size: 7rem;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 5px 0;
+  padding: 5rem 0;
   margin: 1rem 0;
   max-width: 55vw;
   color: rgb(31, 53, 46);
@@ -31,29 +31,30 @@ body {
 }
 
 .memory-game {
-  border: 3px red solid;
+  border: 3px #52d4ad solid;
+  border-radius: 5%;
   display: flex;
   margin: auto;
   flex-wrap: wrap;
-  width: 40vw;
+  width: 50vw;
   height: 70vh;
-  perspective: 500px;
 }
 
 .memory-card {
-  width: 25%;
-  height: 25%;
-  position: relative;
-  border: 2px solid yellow;
+  width: 23%;
+  height: 23%;
+  border: 0.2rem solid rgb(31, 53, 46);
+  border-radius: 15%;
   list-style-type: none;
-  font-size: 8rem;
+  font-size: 10rem;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
   padding: auto;
-  padding-top: 3rem;
+  padding-top: 5rem;
   margin: auto;
   color: rgb(31, 53, 46);
   text-align: center;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 .score-panel {
@@ -90,43 +91,49 @@ body {
   color: rgb(31, 53, 46);
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1050px) {
   .flex-container {
     height: 100vh;
     width: 100vw;
   }
 
   #title {
-    font-size: 3rem;
-    padding: 2px 0;
+    font-size: 6rem;
+    padding: 5rem 0;
     margin: 1rem 0;
     max-width: 75vw;
   }
 
+  .score-panel {
+    width: 70vw;
+    font-size: 3rem;
+    margin: 1rem 0;
+    padding: 2rem 0;
+  }
+
   .memory-game {
-    width: 80vw;
+    width: 90vw;
     height: 60vh;
   }
 
-  .score-panel {
-    width: 45vw;
-    font-size: 1rem;
-    margin: 2px 0;
-    padding: 2px 0;
+  .memory-card {
+    font-size: 9rem;
+    font-weight: 600;
+    padding-top: 3rem;
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 650px) {
   .flex-container {
     height: 100vh;
     width: 100vw;
   }
 
   #title {
-    font-size: 2rem;
-    padding: 2px 0;
+    font-size: 4rem;
+    padding: 1rem 0;
     margin: 1rem 0;
-    max-width: 80vw;
+    max-width: 75vw;
   }
 
   .memory-game {
@@ -134,10 +141,15 @@ body {
     height: 70vh;
   }
 
+  .memory-card {
+    font-size: 4rem;
+    font-weight: 600;
+    padding-top: 1rem;
+  }
   .score-panel {
-    width: 55vw;
-    font-size: 1rem;
-    margin: 1px 0;
-    padding: 1px 0;
+    width: 85vw;
+    font-size: 2rem;
+    margin: 1rem 0;
+    padding: 1rem 0;
   }
 }
