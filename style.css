@@ -6,7 +6,7 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(120deg, #f86464 0%, #52d4ad 100%);
+  background: linear-gradient(120deg, #f86464 0%, #e6df7d 50%, #52d4ad 100%);
 }
 
 .flex-container {
@@ -56,24 +56,26 @@ body {
   text-align: center;
   box-shadow: 10px 5px 20px 0 rgba(46, 61, 73, 0.5);
   cursor: pointer;
+  background: rgba(31, 53, 46, 0.3);
 }
 
-.memory-card .open {
-  transform: rotateY(0);
+.open {
+  transform: rotateY(0) !important;
   cursor: default;
+  background: rgba(31, 53, 46, 0.1);
 }
 
-.memory-card .match {
+.match {
   background: #f0e43f;
   cursor: default;
 }
 
 .score-panel {
-  width: 25vw;
-  font-size: 2rem;
+  width: 40vw;
+  font-size: 3rem;
   color: rgb(31, 53, 46);
-  margin: 5px 0;
-  padding: 5px 0;
+  margin: 2rem 0;
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -84,7 +86,7 @@ body {
   margin: 0;
   padding: 0;
   display: inline-block;
-  margin: 0 4px 0 0;
+  margin: 0 1rem 0 0;
 }
 
 #stars li {

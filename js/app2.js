@@ -25,7 +25,8 @@ let $container = $(".flex-container"),
   $rating = $(".fa-star"),
   $moves = $(".moves"),
   $timer = $(".timer"),
-  $restart = $(".restart");
+  $restart = $(".restart"),
+  $memoryCard = $(".memory-card");
 
 //setting values of the variables
 let openCards = [],
@@ -113,27 +114,23 @@ let modal = (score, moves) => {
   $("#modal").modal("toggle");
 };
 
-$restart.bind("click", () => {
+$restart.on("click", () => {
   $rating.removeClass("fa-star-o").addClass("fa-star");
   begin();
 });
 
 //a func to check if flipped cards are matching
 let checkMatch = () => {
-  $memoryGame.find(".memory-card").bind("click", () => {
+  $memoryGame.find(".memory-card").on("click", () => {
     let $this = $(this);
 
-    if ($this.hasClass("show") || $this.hasClass("match")) {
-      return true;
-    } //provifnes
-
-    let card = $this.content.innerHTML;
+    let cardHTML = $this.content.innerHTML;
     $this.addClass("open show");
-    openCards.push(card); //pushing card into arr with other open cards to operate on
+    openCards.push(cardHTML); //pushing card into arr with other open cards to operate on
 
     if (openCards.length > 1) {
       //checking if HTMLs match
-      if (card === openCards[0]) {
+      if (cardHTML === openCards[0]) {
         $memoryGame.find(".open").addClass("match");
         setTimeout(() => {
           $memoryGame.find(".open").removeClass("open show");
