@@ -19,8 +19,8 @@ let icons = [
 ];
 
 //Defined jQuery selectors
-let $container = $(".flex-container"),
-  $scorePanel = $(".score-panel"),
+let $container = $(".flex-container"), //USE
+  $scorePanel = $(".score-panel"), //USE
   $memoryGame = $(".memory-game"),
   $rating = $(".fa-star"),
   $moves = $(".moves"),
@@ -83,26 +83,30 @@ let begin = () => {
   checkMatch();
 };
 
+//calculating rating for the player based upon
+//his/her number of moves
 let playerRating = moves => {
   let rating;
-  if (15 < moves > 20) {
+  if (moves < 15) {
+    rating = 3;
+  } else if (15 < moves > 20) {
     $rating
       .eq(2)
       .removeClass("fa-star")
       .addClass("fa-star-o");
-    rating = 3;
+    rating = 2;
   } else if (20 < moves < 25) {
     $rating
       .eq(1)
       .removeClass("fa-star")
       .addClass("fa-star-o");
-    rating = 2;
+    rating = 1;
   } else if (moves > 25) {
     $rating
       .eq(0)
       .removeClass("fa-star")
       .addClass("fa-star-o");
-    rating = 1;
+    rating = 0;
   }
   return { score: rating };
 };
@@ -114,17 +118,19 @@ let modal = (score, moves) => {
   $("#modal").modal("toggle");
 };
 
+//functionality of the restart button
+//in the upper right corner of the game
 $restart.on("click", () => {
   $rating.removeClass("fa-star-o").addClass("fa-star");
   begin();
 });
 
-//a func to check if flipped cards are matching
+//a function to check if flipped cards are matching
 let checkMatch = () => {
   $memoryGame.find(".memory-card").on("click", () => {
     let $this = $(this);
 
-    let cardHTML = $this.content.innerHTML;
+    let cardHTML = $this.text();
     $this.addClass("open show");
     openCards.push(cardHTML); //pushing card into arr with other open cards to operate on
 
@@ -148,6 +154,9 @@ let checkMatch = () => {
 
       //increment the moves - needed to calculate the rating
       moves++;
+      $moves.html(moves);
+
+      playerRating(moves);
     }
 
     if (pairs === match) {

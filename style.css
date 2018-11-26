@@ -55,7 +55,6 @@ body {
   align-items: center;
   justify-content: center;
   color: rgb(31, 53, 46);
-  text-align: center;
   box-shadow: 10px 5px 20px 0 rgba(46, 61, 73, 0.5);
   cursor: pointer;
   background: rgba(31, 53, 46, 0.3);
