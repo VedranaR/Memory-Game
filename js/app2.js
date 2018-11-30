@@ -18,26 +18,27 @@ let icons = [
   "grunt"
 ];
 
-//Defined jQuery selectors
-let $container = $(".flex-container"), //USE
-  $scorePanel = $(".score-panel"), //USE
-  $memoryGame = $(".memory-game"),
-  $rating = $(".fa-star"),
-  $moves = $(".moves"),
-  $timer = $(".timer"),
-  $restart = $(".restart"),
-  $memoryCard = $(".memory-card");
+let memoryGame = document.getElementById("memory-game"),
+  star1 = document.getElementById("star1"),
+  star2 = document.getElementById("star2"),
+  star3 = document.getElementById("star3"),
+  fullStar = ["fas", "fa-star"],
+  emptyStar = ["far", "fa-star"],
+  moves = document.getElementById("moves"),
+  timer = document.getElementById("timer"),
+  restart = document.getElementById("restart"),
+  text = document.getElementById("text"),
+  modal = document.getElementById("mymodal");
 
-//setting values of the variables
 let openCards = [],
   second = 0,
-  waitTime = 500,
-  pairs = icons.length / 2,
-  moves = 0, //integer, different from jQuery selector
+  pairs = 8,
+  numberOfMoves = 0,
   match = 0,
-  time;
+  time,
+  score = 0;
 
-//shuffling func from Stackoverflow
+//Fisher–Yates shuffle algorithm
 let shuffle = array => {
   let currentIndex = array.length,
     temporaryValue,
@@ -53,124 +54,60 @@ let shuffle = array => {
   return array;
 };
 
-//func that starts the game - activated on window load
+//function that starts the game
 let begin = () => {
-  //shuffle the icons (again)
-  icons = shuffle(icons);
-  $memoryGame.empty();
+  modal.style.display = "none";
+  //shuffling the icons
+  let shuffledIcons = shuffle(icons);
+
+  //empty all the cards
+  for (let x = 0; x < shuffledIcons.length; x++) {
+    let id = "memory-card" + (x + 1);
+    let card = document.getElementById(id);
+    card.classList.remove("open", "show", "match");
+    let iconClass = card.firstChild.classList.item(1);
+    card.firstChild.classList.remove(iconClass);
+  }
 
   //reset every game parameter
   match = 0;
-  moves = 0;
-  $moves.text("0");
+  numberOfMoves = 0;
+  moves.innerText = "0";
 
   resetTimer(time);
   second = 0;
-  $timer.text(`${second}`);
+  timer.textContent = `${second}`;
   startTimer();
 
   //make tiles and push icons
-  for (let x = 0; x < icons.length; x++) {
-    $memoryGame.append(
-      $(
-        '<li class = "memory-card"><i class = "fab fa-' +
-          icons[x] +
-          '"</i></li>'
-      )
-    );
+  for (let x = 0; x < shuffledIcons.length; x++) {
+    let id = "memory-card" + (x + 1);
+    let card = document.getElementById(id);
+    card.addEventListener("mousedown", checkMatch);
+    let iconClass = "fa-" + shuffledIcons[x];
+    card.firstChild.classList.add(iconClass);
   }
-
-  checkMatch();
 };
 
-//calculating rating for the player based upon
-//his/her number of moves
-let playerRating = moves => {
-  let rating;
-  if (moves < 15) {
-    rating = 3;
-  } else if (15 < moves > 20) {
-    $rating
-      .eq(2)
-      .removeClass("fa-star")
-      .addClass("fa-star-o");
-    rating = 2;
-  } else if (20 < moves < 25) {
-    $rating
-      .eq(1)
-      .removeClass("fa-star")
-      .addClass("fa-star-o");
-    rating = 1;
-  } else if (moves > 25) {
-    $rating
-      .eq(0)
-      .removeClass("fa-star")
-      .addClass("fa-star-o");
-    rating = 0;
-  }
-  return { score: rating };
-};
-
-let modal = (score, moves) => {
-  $("#text").text(
-    `For earning the score of ${score} in ${seconds} seconds, with ${moves} moves, we congratulate You!`
-  );
-  $("#modal").modal("toggle");
+let modalDisplay = (score, numberOfMoves) => {
+  text.textContent = `For earning the score of ${score} in ${second} seconds, with ${numberOfMoves} moves, we congratulate You!`;
+  modal.style.display = "flex";
 };
 
 //functionality of the restart button
 //in the upper right corner of the game
-$restart.on("click", () => {
-  $rating.removeClass("fa-star-o").addClass("fa-star");
+let restartGame = () => {
+  fillTheStar(star3);
+  fillTheStar(star2);
+  fillTheStar(star1);
+
   begin();
-});
-
-//a function to check if flipped cards are matching
-let checkMatch = () => {
-  $memoryGame.find(".memory-card").on("click", () => {
-    let $this = $(this);
-
-    let cardHTML = $this.text();
-    $this.addClass("open show");
-    openCards.push(cardHTML); //pushing card into arr with other open cards to operate on
-
-    if (openCards.length > 1) {
-      //checking if HTMLs match
-      if (cardHTML === openCards[0]) {
-        $memoryGame.find(".open").addClass("match");
-        setTimeout(() => {
-          $memoryGame.find(".open").removeClass("open show");
-        }, waitTime);
-        match++;
-      } else {
-        $memoryGame.find(".open").addClass("notmatch");
-        setTimeout(() => {
-          $memoryGame.find(".open").removeClass("open show");
-        }, waitTime / 2);
-      }
-
-      //empty the openCards array
-      openCards = [];
-
-      //increment the moves - needed to calculate the rating
-      moves++;
-      $moves.html(moves);
-
-      playerRating(moves);
-    }
-
-    if (pairs === match) {
-      rating(moves);
-      let score = rating(moves).score;
-      setTimeout(() => {}, waitTime);
-    }
-  });
 };
 
 //starts the timer on window load
 let startTimer = () => {
   time = setInterval(() => {
-    $timer.text(`${second}`);
+    timer.textContent = `${second}`;
     second += 1;
   }, 1000);
 };
@@ -181,4 +118,81 @@ let resetTimer = time => {
   }
 };
 
-begin();
+//functions responsible for replacing
+//stars with empty ones
+let emptyTheStar = star => {
+  star.classList.remove(...fullStar);
+  star.classList.add(...emptyStar);
+};
+
+let fillTheStar = star => {
+  star.classList.remove(...emptyStar);
+  star.classList.add(...fullStar);
+};
+
+//calculating rating for the player based upon
+//the number of moves
+let playerRating = numberOfMoves => {
+  if (numberOfMoves === 20) {
+    emptyTheStar(star3);
+  } else if (numberOfMoves === 25) {
+    emptyTheStar(star2);
+  } else if (numberOfMoves === 30) {
+    emptyTheStar(star1);
+  }
+  let emptyStars = document.querySelectorAll(".far").length;
+  return (score = 3 - emptyStars);
+};
+
+//a function to check if flipped cards are matching
+let checkMatch = e => {
+  let clickedCard = e.target;
+
+  if (clickedCard.classList.contains("open", "show")) {
+    return true;
+  }
+
+  //let cardIcon = clickedCard.classList.item(1);
+  clickedCard.classList.add("open", "show");
+  openCards.push(clickedCard); //pushing card into arr with other open cards to operate on
+
+  if (openCards.length === 2) {
+    //checking if icons match
+    if (openCards[0].innerHTML === openCards[1].innerHTML) {
+      for (let i = 0; i < openCards.length; i++) {
+        openCards[i].classList.add("match");
+      }
+      // add 1 to match counter
+      match++;
+
+      //empty the openCards array
+      openCards = [];
+    } else {
+      setTimeout(() => {
+        for (let i = 0; i < openCards.length; i++) {
+          openCards[i].classList.remove("show", "open");
+        }
+
+        //empty the openCards array
+        openCards = [];
+      }, 500);
+    }
+
+    //increment the moves - needed to calculate the rating
+    numberOfMoves++;
+    moves.textContent = numberOfMoves;
+
+    playerRating(numberOfMoves);
+  }
+
+  finished(numberOfMoves, match);
+};
+
+//function that executes when all cards are matched
+let finished = (numberOfMoves, match) => {
+  if (pairs === match) {
+    modalDisplay(score, numberOfMoves);
+  }
+};
+
+window.onload = begin();
