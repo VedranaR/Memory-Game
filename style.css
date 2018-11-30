@@ -66,9 +66,14 @@ body {
   background: rgba(31, 53, 46, 0.1);
 }
 
+.show {
+  font-size: 10rem;
+}
+
 .match {
   background: #f0e43f;
   cursor: default;
+  font-size: 10rem;
 }
 
 .score-panel {
