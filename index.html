@@ -24,65 +24,49 @@
   </head>
 
   <body>
-    <section>
-      <div
-        class="modal fade"
-        id="modal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="modal-label"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="modal-label">
-                Congratulations, you're the Winner!
-              </h4>
-            </div>
-            <div class="modal-body"><p id="text"></p></div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                onclick="begin(), $rating.removeClass('fa-star-o').addClass('fa-star'); "
-                class="btn btn-default"
-                data-dismiss="modal"
-              >
-                Play again!
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="flex-container">
+      <section id="mymodal">
+        <h2 id="modal-title">Congratulations, you won!</h2>
+        <p id="text"></p>
+        <button id="modal-button" onclick="restartGame()">New game</button>
+      </section>
+
       <header><h1 id="title">Vedrana's Memory Game</h1></header>
 
       <div class="score-panel">
         <ul id="stars">
-          <li><i class="fa fa-star"></i></li>
-          <li><i class="fa fa-star"></i></li>
-          <li><i class="fa fa-star"></i></li>
+          <li><i id="star1" class="fas fa-star"></i></li>
+          <li><i id="star2" class="fas fa-star"></i></li>
+          <li><i id="star3" class="fas fa-star"></i></li>
         </ul>
 
-        <span class="moves"></span> Moves ~ <span class="timer"></span>s
+        <span id="moves"></span> Moves ~ <span id="timer"></span>s
 
-        <div class="restart"><i class="fas fa-sync-alt"></i></div>
+        <div id="restart" onclick="restartGame()">
+          <i class="fas fa-sync-alt"></i>
+        </div>
       </div>
 
-      <ul class="memory-game"></ul>
+      <ul id="memory-game">
+        <li id="memory-card1"><i class="fab"></i></li>
+        <li id="memory-card2"><i class="fab"></i></li>
+        <li id="memory-card3"><i class="fab"></i></li>
+        <li id="memory-card4"><i class="fab"></i></li>
+        <li id="memory-card5"><i class="fab"></i></li>
+        <li id="memory-card6"><i class="fab"></i></li>
+        <li id="memory-card7"><i class="fab"></i></li>
+        <li id="memory-card8"><i class="fab"></i></li>
+        <li id="memory-card9"><i class="fab"></i></li>
+        <li id="memory-card10"><i class="fab"></i></li>
+        <li id="memory-card11"><i class="fab"></i></li>
+        <li id="memory-card12"><i class="fab"></i></li>
+        <li id="memory-card13"><i class="fab"></i></li>
+        <li id="memory-card14"><i class="fab"></i></li>
+        <li id="memory-card15"><i class="fab"></i></li>
+        <li id="memory-card16"><i class="fab"></i></li>
+      </ul>
     </section>
-    <!-- import jQuery -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-      crossorigin="anonymous"
-    ></script>
+
     <script src="js/app2.js"></script>
   </body>
 </html>
