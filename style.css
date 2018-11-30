@@ -49,7 +49,7 @@ body {
   border-radius: 15%;
   list-style-type: none;
   font-size: 0;
-  font-weight: 700;
+  font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
   display: flex !important;
   align-items: center !important;
@@ -68,13 +68,13 @@ body {
 }
 
 #memory-game li[id^="memory-card"].show {
-  font-size: 10rem;
+  font-size: 9rem;
 }
 
 #memory-game li[id^="memory-card"].match {
   background: #f0e43f;
   cursor: default;
-  font-size: 10rem;
+  font-size: 9rem;
 }
 
 .score-panel {
